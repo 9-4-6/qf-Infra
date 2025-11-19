@@ -1,18 +1,14 @@
 package org.gz.qfinfra.rocketmq.task;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.gz.qfinfra.rocketmq.callback.MessageSendCallback;
 import org.gz.qfinfra.rocketmq.config.QfRocketMqProperties;
 import org.gz.qfinfra.rocketmq.entity.RocketmqFailMessage;
 import org.gz.qfinfra.rocketmq.entity.SendR;
 import org.gz.qfinfra.rocketmq.producer.QfRocketMqProducer;
-import org.gz.qfinfra.rocketmq.repository.RocketmqFailMessageMapper;
 import org.gz.qfinfra.rocketmq.service.RocketmqFailMessageService;
 import org.gz.qfinfra.rocketmq.util.JsonUtil;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
