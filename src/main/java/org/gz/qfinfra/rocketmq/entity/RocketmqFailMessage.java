@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName("rocketmq_fail_message")
-public class RocketmqFailMessage {
+public class  RocketmqFailMessage {
     // 主键ID
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -32,6 +32,7 @@ public class RocketmqFailMessage {
     private Integer maxRetryCount;
     // 状态：0-待补偿，1-补偿中，2-已成功，3-已废弃
     private Integer status;
+    private Integer compensateBatchSize;
     // 失败原因
     private String errorMsg;
     // 创建时间

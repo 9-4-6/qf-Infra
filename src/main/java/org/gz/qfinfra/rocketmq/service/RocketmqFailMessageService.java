@@ -1,5 +1,6 @@
 package org.gz.qfinfra.rocketmq.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,11 +10,12 @@ import org.gz.qfinfra.rocketmq.repository.RocketmqFailMessageMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author 17853
  */
 @Slf4j
-@Service
 public class RocketmqFailMessageService {
     @Resource
     private  RocketmqFailMessageMapper failMessageMapper;
@@ -30,5 +32,17 @@ public class RocketmqFailMessageService {
     }
 
 
+    public List<RocketmqFailMessage> selectList(RocketmqFailMessage rocketmqFailMessage) {
+        // 查询待补偿消息：状态0（待补偿）、已重试次数 < 最大重试次数
+        LambdaQueryWrapper<RocketmqFailMessage> queryWrapper = new LambdaQueryWrapper<RocketmqFailMessage>()
+                .eq(RocketmqFailMessage::getStatus, rocketmqFailMessage.getStatus())
+                .lt(RocketmqFailMessage::getRetryCount, rocketmqFailMessage.getRetryCount())
+                .last("LIMIT " + rocketmqFailMessage.getCompensateBatchSize());
+        return  failMessageMapper.selectList(queryWrapper);
+    }
 
+    public void updateById(RocketmqFailMessage failMsg) {
+
+        failMessageMapper.updateById(failMsg);
+    }
 }

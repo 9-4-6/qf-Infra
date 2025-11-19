@@ -11,7 +11,6 @@ import org.gz.qfinfra.rocketmq.config.QfRocketMqProperties;
 import org.gz.qfinfra.rocketmq.entity.SendR;
 import org.gz.qfinfra.rocketmq.util.JsonUtil;
 import org.springframework.messaging.support.MessageBuilder;
-import org.springframework.stereotype.Component;
 import org.springframework.messaging.Message;
 
 
@@ -19,7 +18,6 @@ import org.springframework.messaging.Message;
  * @author guozhong
  */
 @Slf4j
-@Component
 public class QfRocketMqProducer {
     @Resource
     private  RocketMQTemplate rocketMqTemplate;

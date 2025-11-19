@@ -5,6 +5,7 @@ import jakarta.annotation.Resource;
 import org.gz.qfinfra.rocketmq.consumer.aop.RocketMqConsumerAop;
 import org.gz.qfinfra.rocketmq.producer.QfRocketMqProducer;
 import org.gz.qfinfra.rocketmq.service.RocketmqFailMessageService;
+import org.gz.qfinfra.rocketmq.task.CompensateFailMessageTask;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -30,7 +31,6 @@ public class QfRocketMqAutoConfiguration {
      * 注册统一生产者 Bean
      */
     @Bean
-    // 外部项目未自定义时，使用默认实现
     @ConditionalOnMissingBean
     public QfRocketMqProducer qfRocketMqProducer() {
         return new QfRocketMqProducer(properties);
@@ -52,5 +52,13 @@ public class QfRocketMqAutoConfiguration {
     @ConditionalOnMissingBean
     public RocketmqFailMessageService rocketmqFailMessageService() {
         return new RocketmqFailMessageService();
+    }
+    /**
+     * 注册失败消息服务（补偿）
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public CompensateFailMessageTask compensateFailMessageTask() {
+        return new CompensateFailMessageTask(properties,qfRocketMqProducer(),rocketmqFailMessageService());
     }
 }

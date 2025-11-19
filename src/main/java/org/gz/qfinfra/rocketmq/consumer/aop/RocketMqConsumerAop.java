@@ -24,7 +24,6 @@ import java.util.List;
  */
 @Slf4j
 @Aspect
-@Component
 public class RocketMqConsumerAop {
     @Resource
     private  RocketmqFailMessageService failMessageService;
