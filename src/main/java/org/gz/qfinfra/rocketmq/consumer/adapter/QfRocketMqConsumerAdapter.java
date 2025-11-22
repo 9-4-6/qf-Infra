@@ -16,6 +16,11 @@ import java.lang.annotation.Annotation;
  */
 @Component
 public abstract class QfRocketMqConsumerAdapter<T> implements RocketMQListener<T> {
+
+    @Override
+    public abstract void onMessage(T message);
+
+
     /**
      * 手动构建原生注解（补全所有抽象方法）
      */
