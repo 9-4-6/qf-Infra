@@ -14,6 +14,8 @@ import org.gz.qfinfra.rocketmq.service.RocketmqFailMessageService;
 
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -23,7 +25,10 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 @Aspect
 public class RocketmqConsumerAop {
-    public final Map<String, RocketMQListener> topicHandlerMapping = new ConcurrentHashMap<>();
+    private final Map<String, RocketMQListener> topicHandlerMapping = new ConcurrentHashMap<>();
+    public Map<String, RocketMQListener> getTopicHandlerMapping() {
+        return Map.copyOf(topicHandlerMapping);
+    }
     private RocketmqFailMessageService failMessageService;
 
 

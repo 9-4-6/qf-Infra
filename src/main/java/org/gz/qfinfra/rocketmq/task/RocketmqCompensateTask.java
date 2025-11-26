@@ -30,7 +30,7 @@ public class RocketmqCompensateTask {
     public RocketmqCompensateTask(RocketmqConsumerAop aop,
                                   RocketmqFailMessageService failMessageService,
                                   RocketmqProperties rocketmqProperties) {
-        this.topicHandlerMapping = aop.topicHandlerMapping;
+        this.topicHandlerMapping = aop.getTopicHandlerMapping();
         this.failMessageService = failMessageService;
         this.rocketmqProperties = rocketmqProperties;
     }
