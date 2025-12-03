@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author 17853
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(name = "rocketmq.qf.producer.enabled", havingValue = "true")
 public class RocketmqAutoConfiguration {
     /**

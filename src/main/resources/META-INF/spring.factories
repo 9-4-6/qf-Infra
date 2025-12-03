@@ -1,3 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-org.gz.qfinfra.rocketmq.config.RocketmqAutoConfiguration,\
-org.gz.qfinfra.rocketmq.config.DeadLetterQueueConfiguration
+org.gz.qfinfra.rocketmq.config.RocketmqAutoConfiguration
