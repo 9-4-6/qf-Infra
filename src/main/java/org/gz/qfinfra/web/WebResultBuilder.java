@@ -4,16 +4,16 @@ package org.gz.qfinfra.web;
  * @author guozhong
  * @date 2025/11/15
  */
-public class WebRBuilder {
+public class WebResultBuilder {
     /**
      * 构建处理成功请求
      * @param data
      * @param <T>
      * @return
      */
-    public static <T> WebR success(T data){
-        WebREnum success = WebREnum.SUCCESS;
-        return WebR.builder().success(true).code(success.getCode())
+    public static <T> WebResult success(T data){
+        WebResultEnum success = WebResultEnum.SUCCESS;
+        return WebResult.builder().success(true).code(success.getCode())
                 .msg(success.getMsg()).data(data).build();
     }
 
@@ -24,8 +24,8 @@ public class WebRBuilder {
      * @param data 响应数据
      * @return
      */
-    public static <T> WebR success(Integer code, String msg, T data){
-        return WebR.builder().success(true).code(code)
+    public static <T> WebResult success(Integer code, String msg, T data){
+        return WebResult.builder().success(true).code(code)
                 .msg(msg).data(data).build();
     }
 
@@ -35,9 +35,9 @@ public class WebRBuilder {
      * @param <T>
      * @return
      */
-    public static <T> WebR fail(){
-        WebREnum fail = WebREnum.FAIL;
-        return WebR.builder().success(false).code(fail.getCode())
+    public static <T> WebResult fail(){
+        WebResultEnum fail = WebResultEnum.FAIL;
+        return WebResult.builder().success(false).code(fail.getCode())
                 .msg(fail.getMsg()).build();
     }
 
@@ -47,8 +47,8 @@ public class WebRBuilder {
      * @param msg 响应消息
      * @return
      */
-    public static <T> WebR fail(Integer code, String msg){
-        return WebR.builder().success(false).code(code)
+    public static <T> WebResult fail(Integer code, String msg){
+        return WebResult.builder().success(false).code(code)
                 .msg(msg).build();
     }
 }

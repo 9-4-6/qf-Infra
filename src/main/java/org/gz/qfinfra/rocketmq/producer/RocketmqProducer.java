@@ -1,7 +1,6 @@
 package org.gz.qfinfra.rocketmq.producer;
 
 
-import lombok.Setter;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
@@ -18,12 +17,14 @@ import org.springframework.util.Assert;
  * @author guozhong
  * RocketMQ生产者封装
  */
-@Setter
 public class RocketmqProducer {
     private static final Logger log = LoggerFactory.getLogger(RocketmqProducer.class);
 
-    private RocketMQTemplate rocketMqTemplate;
+    private final RocketMQTemplate rocketMqTemplate;
 
+    public RocketmqProducer(RocketMQTemplate rocketMqTemplate) {
+        this.rocketMqTemplate = rocketMqTemplate;
+    }
 
 
     public <T> void sendSyncMessage(String topic, T msg, RocketmqSendFailCallback failCallback) {

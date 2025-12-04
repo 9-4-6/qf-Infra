@@ -16,9 +16,7 @@ public class RocketmqAutoConfiguration {
      */
     @Bean
     public RocketmqProducer rocketmqProducer(RocketMQTemplate rocketMqTemplate) {
-        RocketmqProducer producer = new RocketmqProducer();
-        producer.setRocketMqTemplate(rocketMqTemplate);
-        return producer;
+        return new RocketmqProducer(rocketMqTemplate);
     }
 
 }

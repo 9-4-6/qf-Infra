@@ -17,7 +17,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class WebR<T> implements Serializable {
+public class WebResult<T> implements Serializable {
     @Serial
     private static final long serialVersionUID = 8456352400486508357L;
     private Integer code;

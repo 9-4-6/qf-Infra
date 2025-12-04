@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum WebREnum {
+public enum WebResultEnum {
     /**
      *  处理成功
      */
